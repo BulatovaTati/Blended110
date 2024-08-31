@@ -28,26 +28,40 @@
 //то показати через alert: "Вірно!"
 //в противному випадку відобразити:"Не знаєте? ECMAScript!"
 
-// const answer = prompt("Яка офіційна назва JavaScript?");
+// const answer = prompt("Яка має бути офіційна назва JavaScript?");
 // if (answer.toLowerCase() === "ecmascript") {
-//   alert("Вірно!");
+//     alert("Вірно");
 // } else {
 //     alert("Не знаєте? ECMAScript!");
 // }
 
-// Написати цикл що виводить в консоль числа від меньшого до більшого в діапазоні від min до max
-// але лише ті що кратні 5-ти
+//Напишіть цикл, який виводить в консоль
+//числа от max до min по зменьшенню
+//Виведіть в консоль суму усіх парних чисел
 
-// ```js
 // const max = 10;
 // const min = 0;
 // let total = 0;
-// for (let i = max; i >= min; i -= 1) {
-//   if (i % 2 === 0) {
-//     total += i;
-//   }
+// for (let i = max; i >= min; i--) {
+//     if (i % 2 === 0) {
+//         total += i;
+//     }
+//     console.log(i)
+
 // }
-// console.log("total: ", total);
+// console.log(total)
+
+// function getNumbers(max, min) {
+//   let total = 0;
+//   for (let i = max; i >= min; i--) {
+//     if (i % 2 === 0) {
+//       total += i;
+//     }
+//     console.log(i);
+//   }
+//   return total;
+// }
+// console.log(getNumbers(10, 0));
 
 //Напишіть код, який буде питати
 //логін за допомогою prompt и логіровати результат
@@ -64,18 +78,58 @@
 //то вивести рядок "Вітаю!"
 //в іншому випадку виводити рядок "Невірний пароль!"
 
+// const login = prompt("enter login");
+// console.log(login);
+// if (login === "Admin") {
+//   const password = prompt("enter password");
+//   //   if (password === "Я головний") {
+//   //     alert("Вітаю!");
+//   //   } else {
+//   //     alert("Невірний пароль!");
+//   //   }
+
+//   alert(password === "Я головний" ? "Вітаю!" : "Невірний пароль!");
+// } else if (login === "" || login === null) {
+//   alert("Скасовано");
+// } else {
+//   alert("Я вас не знаю");
+// }
+
+// Змінна num може набувати 4 значення: 1, 2, 3 або 4. Якщо вона має
+// значення '1', то у змінну result запишемо 'зима', якщо має значення
+// '2' - 'весна' і так далі. Розв'яжіть завдання через switch-case.
+
+// const num = Number(prompt("введіть число від 1 до 4"));
+// let result = "";
+// switch (num) {
+//   case 1:
+//     result = "зима";
+//     break;
+//     result = "весна";
+//     break;
+//   case 3:
+//     result = "літо";
+//     break;
+//   case 4:
+//     result = "осінь";
+//     break;
+//   default:
+//     result = "введіть число від 1 до 4";
+// }
+// console.log(`${num}-${result}`);
+
 // Переверни рядок у зворотньому порядку
-const string = "hello";
-console.log("string: ", string);
+// const string = "hello";
+// console.log("string: ", string);
 
-let newStr = "";
+// let newStr = "";
 
-for (let i = string.length - 1; i >= 0; i--) {
-  newStr += string[i];
+// for (let i = string.length - 1; i >= 0; i--) {
+//   newStr += string[i];
 
-  console.log("newStr: ", newStr);
-  // newStr: olleh;
-}
+//   console.log("newStr: ", newStr);
+//   // newStr: olleh;
+// }
 
 //  or ->
 //for(let i = 0; i > string.length; i++)
