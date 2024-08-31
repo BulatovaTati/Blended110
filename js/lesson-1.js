@@ -78,19 +78,43 @@
 //то вивести рядок "Вітаю!"
 //в іншому випадку виводити рядок "Невірний пароль!"
 
-const login = prompt("enter login");
-console.log(login);
-if (login === "Admin") {
-  const password = prompt("enter password");
-  //   if (password === "Я головний") {
-  //     alert("Вітаю!");
-  //   } else {
-  //     alert("Невірний пароль!");
-  //   }
+// const login = prompt("enter login");
+// console.log(login);
+// if (login === "Admin") {
+//   const password = prompt("enter password");
+//   //   if (password === "Я головний") {
+//   //     alert("Вітаю!");
+//   //   } else {
+//   //     alert("Невірний пароль!");
+//   //   }
 
-  alert(password === "Я головний" ? "Вітаю!" : "Невірний пароль!");
-} else if (login === "" || login === null) {
-  alert("Скасовано");
-} else {
-  alert("Я вас не знаю");
+//   alert(password === "Я головний" ? "Вітаю!" : "Невірний пароль!");
+// } else if (login === "" || login === null) {
+//   alert("Скасовано");
+// } else {
+//   alert("Я вас не знаю");
+// }
+
+
+// Змінна num може набувати 4 значення: 1, 2, 3 або 4. Якщо вона має
+// значення '1', то у змінну result запишемо 'зима', якщо має значення
+// '2' - 'весна' і так далі. Розв'яжіть завдання через switch-case.
+ 
+const num = Number(prompt("введіть число від 1 до 4"));
+let result = "";
+switch(num) {
+  case 1:
+    result = 'зима';
+    break;
+      result = 'весна';
+      break;
+      case 3: 
+      result = 'літо';
+      break;
+      case 4:
+        result = 'осінь';
+        break;
+        default:
+          result = "введіть число від 1 до 4";
 }
+console.log(`${num}-${result}`)
