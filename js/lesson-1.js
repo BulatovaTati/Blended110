@@ -95,26 +95,43 @@
 //   alert("Я вас не знаю");
 // }
 
-
 // Змінна num може набувати 4 значення: 1, 2, 3 або 4. Якщо вона має
 // значення '1', то у змінну result запишемо 'зима', якщо має значення
 // '2' - 'весна' і так далі. Розв'яжіть завдання через switch-case.
- 
-const num = Number(prompt("введіть число від 1 до 4"));
-let result = "";
-switch(num) {
-  case 1:
-    result = 'зима';
-    break;
-      result = 'весна';
-      break;
-      case 3: 
-      result = 'літо';
-      break;
-      case 4:
-        result = 'осінь';
-        break;
-        default:
-          result = "введіть число від 1 до 4";
-}
-console.log(`${num}-${result}`)
+
+// const num = Number(prompt("введіть число від 1 до 4"));
+// let result = "";
+// switch (num) {
+//   case 1:
+//     result = "зима";
+//     break;
+//     result = "весна";
+//     break;
+//   case 3:
+//     result = "літо";
+//     break;
+//   case 4:
+//     result = "осінь";
+//     break;
+//   default:
+//     result = "введіть число від 1 до 4";
+// }
+// console.log(`${num}-${result}`);
+
+// Переверни рядок у зворотньому порядку
+// const string = "hello";
+// console.log("string: ", string);
+
+// let newStr = "";
+
+// for (let i = string.length - 1; i >= 0; i--) {
+//   newStr += string[i];
+
+//   console.log("newStr: ", newStr);
+//   // newStr: olleh;
+// }
+
+//  or ->
+//for(let i = 0; i > string.length; i++)
+// { newStr = string[i] + newStr; }
+//
