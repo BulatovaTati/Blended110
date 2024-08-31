@@ -21,9 +21,6 @@
 //   alert("Ви ввели не число");
 // }
 
-
-
-
 //Використовуя if...else,
 //напишіть код, який буде питати:
 //"Яка офіційна назва JavaScript?"
@@ -54,16 +51,46 @@
 // }
 // console.log(total)
 
-function getNumbers(max, min) {
-    let total = 0;
-    for (let i = max; i >= min; i--) {
-        if (i % 2 === 0) {
-            total += i;
-        }
-        console.log(i)
-    }
-    return total;
+// function getNumbers(max, min) {
+//   let total = 0;
+//   for (let i = max; i >= min; i--) {
+//     if (i % 2 === 0) {
+//       total += i;
+//     }
+//     console.log(i);
+//   }
+//   return total;
+// }
+// console.log(getNumbers(10, 0));
 
+//Напишіть код, який буде питати
+//логін за допомогою prompt и логіровати результат
+//в консоль браузера
+
+//Якщо користувач вводить "Адмін",
+//то prompt запрашує пароль.
+//Якщо ничого не ввели чи нажата клавіша Esc
+//вивести строку "Скасовано"
+//В противному випадку вивести рядок "Я вас не знаю"
+
+//Пароль перевіряти так:
+//Якщо введен пароль "Я головний",
+//то вивести рядок "Вітаю!"
+//в іншому випадку виводити рядок "Невірний пароль!"
+
+const login = prompt("enter login");
+console.log(login);
+if (login === "Admin") {
+  const password = prompt("enter password");
+  //   if (password === "Я головний") {
+  //     alert("Вітаю!");
+  //   } else {
+  //     alert("Невірний пароль!");
+  //   }
+
+  alert(password === "Я головний" ? "Вітаю!" : "Невірний пароль!");
+} else if (login === "" || login === null) {
+  alert("Скасовано");
+} else {
+  alert("Я вас не знаю");
 }
-console.log(getNumbers(10, 0));
-
