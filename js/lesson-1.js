@@ -132,6 +132,6 @@
 // }
 
 //  or ->
-//for(let i = 0; i > string.length; i++)
+//for(let i = 0; i < string.length; i++)
 // { newStr = string[i] + newStr; }
 //
