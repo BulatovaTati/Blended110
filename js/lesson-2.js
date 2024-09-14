@@ -130,3 +130,20 @@ for (const value of values) {
     
 //   }
 
+// 4. Напишіть функцію calculateAverage()
+// яка приймає довільну кількість
+// аргументів і повертає їхнє середнє значення.
+// Додати перевірку, що аргументи це числа.
+function calculateAverage() {
+  let total = 0;
+  let count = 0;
+  for (const arg of arguments) {
+    
+    if (typeof arg === "number") {
+      total += arg;
+      count += 1;
+    }
+  }
+  return total / count;
+}
+console.log(calculateAverage(1, 2, 3, 4, 5, -10, "hello"));
