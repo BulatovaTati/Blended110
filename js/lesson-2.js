@@ -39,11 +39,8 @@
 // }
 // checkLogin(logins);
 
-
-
 // 3. Напишіть функцію, яка складатиме сусідні числа і пушитиме їх в новий масив
 const someArr = [22, 11, 34, 5, 12, 13, 14, 15];
-
 
 // function sum(array) {
 //     const sumArray = [];
@@ -57,10 +54,8 @@ const someArr = [22, 11, 34, 5, 12, 13, 14, 15];
 
 // console.log(sum(someArr));
 
-
 // 5. Напишіть функцію, яка шукатиме найдовше слово у реченні
 // console.log(findLongestWord("London is the capital of Great Britain")); // 'capital'
-
 
 // function findLongestWord(str) {
 //     const array = str.split(" ");
@@ -68,13 +63,12 @@ const someArr = [22, 11, 34, 5, 12, 13, 14, 15];
 //     for (const word of array) {
 //         if (longestWord.length < word.length) {
 //             longestWord = word;
-           
+
 //         }
 //          console.log(longestWord);
 //     }
 //     return longestWord;
 // }
-
 
 // 7. Є об'єкт, в якому зберігаються зарплати команди
 // Напишіть код для додавання усіх зарплат та
@@ -82,26 +76,18 @@ const someArr = [22, 11, 34, 5, 12, 13, 14, 15];
 // Якщо об'єкт salaries пустий, то результат має бути 0
 
 const salaries = {
-    // Mango: 100,
-    // Poly: 160,
-    // Ajax: 1470,
-  };
+  // Mango: 100,
+  // Poly: 160,
+  // Ajax: 1470,
+};
 
 let total = 0;
 
 const values = Object.values(salaries);
 for (const value of values) {
-    total += value;
+  total += value;
 }
- console.log(total);
- 
-
-
-
-
-
-
-
+console.log(total);
 
 // 7. Напиши скрипт, який для об'єкту user,
 // послідовно:
@@ -110,8 +96,6 @@ for (const value of values) {
 // 3 - замінить значення premium на false
 // 4 - виводить зміст об'єкта user у форматі
 // '<ключ>:<значення>' використовуя Object.keys() та for...of
-
-
 
 // const user = {
 //     name: "John",
@@ -127,7 +111,7 @@ for (const value of values) {
 //   const keys = Object.keys(user);
 //   for (const key of keys) {
 //     console.log(`${key}:${user[key]}`);
-    
+
 //   }
 
 // 4. Напишіть функцію calculateAverage()
@@ -138,7 +122,7 @@ for (const value of values) {
 //   let total = 0;
 //   let count = 0;
 //   for (const arg of arguments) {
-    
+
 //     if (typeof arg === "number") {
 //       total += arg;
 //       count += 1;
@@ -169,25 +153,79 @@ const calculator = {
     return this.exist() ? this.a + this.b : `values not found`;
   },
   mult() {
-  //  if (this.a && this.b) {
-  //     return this.a * this.b;
-  //   }  
-  //   return `values not found`;
+    //  if (this.a && this.b) {
+    //     return this.a * this.b;
+    //   }
+    //   return `values not found`;
     return this.exist() ? this.a * this.b : `values not found`;
   },
   raise() {
     // if (this.a && this.b) {
     //   return this.a ** this.b;
-    // }  
+    // }
     // return `values not found`;
     return this.exist() ? this.a ** this.b : `values not found`;
   },
   exist() {
     return this.a && this.b;
-  }
-  
-}
+  },
+};
 // console.log(calculator.read(2, 7))
-console.log(calculator.sum());
-console.log(calculator.mult());
-console.log(calculator.raise());
+// console.log(calculator.sum());
+// console.log(calculator.mult());
+// console.log(calculator.raise());
+
+// 10. Створіть телефонну книгу - об'єкт phonebook,
+// у якого є властивість contacts (список контактів)
+// та методи управління книгою:
+// add(data) - приймає об'єкт data, де зберігається
+// name, email, category, id, createdAt
+// (name i email - обов'язкові параметри, які треба передавати
+// при додаванні нового контакта,
+// category - може передаватись чи ні, якщо ні - має
+// приймати значення "default",
+// id та createdAt генеруються відповідними методами:
+// generateId() і getDate());
+// *не забудь додати перевірку, якщо контакт з таким ім'ям чи імейлом вже є - ми його не додаємо
+// list() - виводить список контактів у вигляді таблиці;
+// filtered(category) - фільтрує контактів по обраній категорії (друзі, робота і т.д.)
+// delete(name) - видаляє контакт з заданим ім'ям;
+// updateName(oldName, newName) - зиінює ім'я контакта;
+
+const phonebook = {
+  contacts: [],
+  add(data) {
+    const newContact = {
+      name: data.name,
+      email: data.email,
+      category: data.category ?? "default",
+      createdAt: this.getDate(),
+      id: this.generateId(),
+    };
+
+    this.contacts.push(newContact);
+    console.log("newContact: ", newContact);
+  },
+  list() {
+    console.table(this.contacts);
+  },
+  filtered(category) {
+    const newFilteredContacts = [];
+
+    for (const contact of this.contacts) {
+      if (contact.category === category) {
+        newFilteredContacts.push(contact);
+      }
+    }
+    return newFilteredContacts;
+  },
+  delete(name) {},
+  updateName(oldName, newName) {},
+
+  generateId() {
+    return "#" + Math.random().toString(36).substr(2, 9);
+  },
+  getDate() {
+    return Date.now();
+  },
+};
