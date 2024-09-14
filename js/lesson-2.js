@@ -134,16 +134,60 @@ for (const value of values) {
 // яка приймає довільну кількість
 // аргументів і повертає їхнє середнє значення.
 // Додати перевірку, що аргументи це числа.
-function calculateAverage() {
-  let total = 0;
-  let count = 0;
-  for (const arg of arguments) {
+// function calculateAverage() {
+//   let total = 0;
+//   let count = 0;
+//   for (const arg of arguments) {
     
-    if (typeof arg === "number") {
-      total += arg;
-      count += 1;
-    }
+//     if (typeof arg === "number") {
+//       total += arg;
+//       count += 1;
+//     }
+//   }
+//   return total / count;
+// }
+// console.log(calculateAverage(1, 2, 3, 4, 5, -10, "hello"));
+
+// 9. Створіть об'єкт calculator з наступними методами:
+// read(a, b) - приймає два аргумента і зберігає їх
+// як властивості об'єкта
+// sum() повертає сумму збереженних значень (з перевіркою на наявність властивостей в об'єкті)
+// mult() перемножає збереженні значення і повертає результат (з перевіркою на наявність властивостей в об'єкті)
+// raise() возводить першу властивсть в ступінь другої і повертає результат (з перевіркою на наявність властивостей в об'єкті)
+// * винеси перевірку на наявність властивостей в об'єкті в окремий метод exist ()
+
+const calculator = {
+  read(a, b) {
+    this.a = a;
+    this.b = b;
+  },
+  sum() {
+    // if (this.a && this.b) {
+    //   return this.a + this.b;
+    // }
+    // return `values not found`;
+    return this.exist() ? this.a + this.b : `values not found`;
+  },
+  mult() {
+  //  if (this.a && this.b) {
+  //     return this.a * this.b;
+  //   }  
+  //   return `values not found`;
+    return this.exist() ? this.a * this.b : `values not found`;
+  },
+  raise() {
+    // if (this.a && this.b) {
+    //   return this.a ** this.b;
+    // }  
+    // return `values not found`;
+    return this.exist() ? this.a ** this.b : `values not found`;
+  },
+  exist() {
+    return this.a && this.b;
   }
-  return total / count;
+  
 }
-console.log(calculateAverage(1, 2, 3, 4, 5, -10, "hello"));
+// console.log(calculator.read(2, 7))
+console.log(calculator.sum());
+console.log(calculator.mult());
+console.log(calculator.raise());
