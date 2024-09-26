@@ -87,7 +87,7 @@ const values = Object.values(salaries);
 for (const value of values) {
   total += value;
 }
-console.log(total);
+// console.log(total);
 
 // 7. Напиши скрипт, який для об'єкту user,
 // послідовно:
@@ -176,8 +176,11 @@ const calculator = {
 // console.log(calculator.raise());
 
 // 10. Створіть телефонну книгу - об'єкт phonebook,
+
 // у якого є властивість contacts (список контактів)
+
 // та методи управління книгою:
+
 // add(data) - приймає об'єкт data, де зберігається
 // name, email, category, id, createdAt
 // (name i email - обов'язкові параметри, які треба передавати
@@ -186,46 +189,113 @@ const calculator = {
 // приймати значення "default",
 // id та createdAt генеруються відповідними методами:
 // generateId() і getDate());
+
 // *не забудь додати перевірку, якщо контакт з таким ім'ям чи імейлом вже є - ми його не додаємо
+
 // list() - виводить список контактів у вигляді таблиці;
 // filtered(category) - фільтрує контактів по обраній категорії (друзі, робота і т.д.)
 // delete(name) - видаляє контакт з заданим ім'ям;
-// updateName(oldName, newName) - зиінює ім'я контакта;
+// updateName(oldName, newName) - змінює ім'я контакта;
 
 const phonebook = {
+  // є властивість contacts(список контактів)
   contacts: [],
+  // методи управління книгою:
+  // -- додає контакт
   add(data) {
+    const { name, email, category = "default" } = data;
+
+    // *не забудь додати перевірку
+    const existingContact = this.contacts.find(
+      (contact) => contact.name === name || contact.email === email
+    );
+
+    if (existingContact) {
+      console.log("Контакт з таким ім'ям або email вже існує.");
+      return;
+    }
+
     const newContact = {
-      name: data.name,
-      email: data.email,
-      category: data.category ?? "default",
-      createdAt: this.getDate(),
       id: this.generateId(),
+      name,
+      email,
+      category,
+      createdAt: this.getDate(),
     };
 
     this.contacts.push(newContact);
-    console.log("newContact: ", newContact);
   },
+  // виводить список контактів у вигляді таблиці
   list() {
     console.table(this.contacts);
   },
+  // фільтрує контактів по обраній категорії
   filtered(category) {
-    const newFilteredContacts = [];
-
-    for (const contact of this.contacts) {
-      if (contact.category === category) {
-        newFilteredContacts.push(contact);
-      }
-    }
-    return newFilteredContacts;
+    const filteredContacts = this.contacts.filter(
+      (contact) => contact.category === category
+    );
+    console.table(filteredContacts);
   },
-  delete(name) {},
-  updateName(oldName, newName) {},
+  // видаляє контакт з заданим ім'ям
+  delete(name) {
+    // indexOf(): повертає індекс першого знайденого елемента в масиві.
+    // Ідеальний вибір, якщо потрібно знати, де знаходиться конкретний елемент.
+    // find(): використовується для пошуку першого елемента, який відповідає заданій умові в переданій функції зворотного виклику.
+    // findIndex(): аналогічний методу find(), але повертає індекс знайденого елемента, а не сам елемент.
+    // includes(): простий метод, який повертає true, якщо масив містить зазначений елемент, і false – в іншому випадку.
+
+    const index = this.contacts.findIndex(
+      (contact) => contact.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (index === -1) {
+      console.log("Контакт з таким ім'ям не знайдено.");
+      return;
+    }
+
+    this.contacts.splice(index, 1);
+  },
+  // змінює ім'я контакта
+  updateName(oldName, newName) {
+    const contact = this.contacts.find((contact) => contact.name === oldName);
+
+    if (!contact) {
+      console.log("Контакт з таким старим ім'ям не знайдено.");
+      return;
+    }
+
+    contact.name = newName;
+  },
 
   generateId() {
     return "#" + Math.random().toString(36).substr(2, 9);
   },
+
   getDate() {
     return Date.now();
   },
 };
+
+// phonebook.add({
+//   name: "Doe",
+//   email: "Doe@example.com",
+//   category: "friends",
+// });
+
+// phonebook.add({
+//   name: "Jane",
+//   email: "Jane@example.com",
+//   category: "friends",
+// });
+
+// phonebook.add({
+//   name: "Lala",
+//   email: "Lala@example.com",
+// });
+
+phonebook.list();
+// phonebook.filtered("friends");
+// phonebook.delete("Doe");
+// phonebook.list();
+// phonebook.updateName("Doe", "John");
+// phonebook.list();
