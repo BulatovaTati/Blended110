@@ -248,7 +248,7 @@ const phonebook = {
       (contact) => contact.name.toLowerCase() === name.toLowerCase()
     );
 
-    if (index === -1) {
+    if (!~index) {
       console.log("Контакт з таким ім'ям не знайдено.");
       return;
     }
@@ -276,26 +276,26 @@ const phonebook = {
   },
 };
 
-// phonebook.add({
-//   name: "Doe",
-//   email: "Doe@example.com",
-//   category: "friends",
-// });
+phonebook.add({
+  name: "Doe",
+  email: "Doe@example.com",
+  category: "friends",
+});
 
-// phonebook.add({
-//   name: "Jane",
-//   email: "Jane@example.com",
-//   category: "friends",
-// });
+phonebook.add({
+  name: "Jane",
+  email: "Jane@example.com",
+  category: "friends",
+});
 
-// phonebook.add({
-//   name: "Lala",
-//   email: "Lala@example.com",
-// });
+phonebook.add({
+  name: "Lala",
+  email: "Lala@example.com",
+});
 
 phonebook.list();
 // phonebook.filtered("friends");
-// phonebook.delete("Doe");
-// phonebook.list();
+phonebook.delete("Doe");
+phonebook.list();
 // phonebook.updateName("Doe", "John");
 // phonebook.list();
