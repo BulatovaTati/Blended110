@@ -69,13 +69,8 @@ const tweets = [
 // console.log(getRandomValues(tweets, "ff"));
 // console.log(getRandomValues(tweets, "gender"));
 
-
-
-
-
 // 2. Напишіть функцію getUsersWithJs(array), яка приймає масив об'єктів і повертає масив тільки тих користувачів,
 // у кого є тег "js" (властивість tags)
-
 
 // function getUsersWithJs(array) {
 //   return array.filter(elem => elem.tags.includes("js"));
@@ -83,27 +78,37 @@ const tweets = [
 
 // console.log(getUsersWithJs(tweets));
 
-
-
 // 3. Написати функцію getUsersWithGender(array, gender), яка приймає масив і стать
 // і повертає масив імен користувачів по цій статі (властивість gender)
 
-function getUsersWithGender(array, gender) {
-//   return array
-//   .filter(elem => elem.gender === gender)
-// .map(elem => elem.name)
+// function getUsersWithGender(array, gender) {
+// //   return array
+// //   .filter(elem => elem.gender === gender)
+// // .map(elem => elem.name)
 
-// return array.reduce((userNames, elem) => {
-//   if (elem.gender === gender) {
-//     userNames.push(elem.name)
-//   } 
-//   return userNames
-//   },[])
+// // return array.reduce((userNames, elem) => {
+// //   if (elem.gender === gender) {
+// //     userNames.push(elem.name)
+// //   }
+// //   return userNames
+// //   },[])
 
+// return array.reduce((userNames, elem) => elem.gender === gender? [...userNames, elem.name]: userNames,[])
 
-return array.reduce((userNames, elem) => elem.gender === gender? [...userNames, elem.name]: userNames,[])
+// }
 
+// console.log(getUsersWithGender(tweets, "male"));
+
+// 4. Написати функцію getSortedUniqueTags(array), яка приймає масив
+// і повертає масив всіх тегів усіх користувачів (поле tags), при цьому не повинно бути
+// повторювань тегів і вони мають бути відсортовані в алфавітному порядку.
+// Використай ланцюжок методів.
+
+function getSortedUniqueTags(array) {
+  return array
+    .flatMap((elem) => elem.tags)
+    .filter((elem, i, array) => array.indexOf(elem) === i)
+    .toSorted((a, b) => a.localeCompare(b));
 }
 
-console.log(getUsersWithGender(tweets, "male"));
-
+console.log(getSortedUniqueTags(tweets));
