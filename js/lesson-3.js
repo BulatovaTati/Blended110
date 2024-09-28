@@ -104,11 +104,67 @@ const tweets = [
 // повторювань тегів і вони мають бути відсортовані в алфавітному порядку.
 // Використай ланцюжок методів.
 
-function getSortedUniqueTags(array) {
-  return array
-    .flatMap((elem) => elem.tags)
-    .filter((elem, i, array) => array.indexOf(elem) === i)
-    .toSorted((a, b) => a.localeCompare(b));
-}
+// function getSortedUniqueTags(array) {
+//   return array
+//     .flatMap((elem) => elem.tags)
+//     .filter((elem, i, array) => array.indexOf(elem) === i)
+//     .toSorted((a, b) => a.localeCompare(b));
+// }
 
-console.log(getSortedUniqueTags(tweets));
+// console.log(getSortedUniqueTags(tweets));
+
+
+// 5. Напишіть функцію getStatiscticsOfTags(array), яка приймає масив
+// і повертає об'єкт статистики, який враховує скільки разів повторюється кожен тег
+// в усіх користувачів разом (не для кожного окремо)
+// має бути відповідь: {js: 5, nodejs: 5, html: 2, css: 2, react: 4}
+
+// function getStatiscticsOfTags(array) {
+  // const stats = {};
+  // array.flatMap(elem => elem.tags)
+  //   .forEach(tag => {
+  //     if (stats[tag])
+  //     {
+  //       stats[tag] += 1
+  //     }
+  //     else 
+  //     {
+  //       stats[tag] = 1;
+  //     }
+  //     console.log(stats);
+      
+  //   })
+  //   return stats;
+//   return array.flatMap(elem => elem.tags).reduce((stats, tag) =>({...stats, [tag]: stats[tag] ? stats[tag] + 1 : 1}),{})
+// };
+// console.log(getStatiscticsOfTags(tweets));
+
+
+// 1. Створи клас User для створення користувача з такими властивостями:
+// a. userName - ім'я, рядок
+// b. age - вік, число
+// c. numbersOfPost - кількість постів, число
+// d. конструктор очікує 1 параметр - об'єкт налаштувань з однойменними властивостями
+// Додай метод getInfo(), який повертає рядок:
+// `Користувачеві <name> <age> років і в нього <posts> публікацій.`
+// Додай метод updateNumberOfPosts(amount), який оновлює кількість постів юзера
+// де amount - це число, кількість постів, що має додаватись до вже існуючих у властивості numbersOfPost
+
+// class User {
+//   constructor(params) {
+//     this.userName = params.userName;
+//     this.age = params.age;
+//     this.numberOfPosts = params.numberOfPosts;
+//   }
+//   getInfo() {
+//     return `Користувачеві ${this.userName} ${this.age} років і в нього ${this.numberOfPosts} публікацій.`
+//   }
+//   updateNumberOfPosts(amount) {
+//     this.numberOfPosts += amount;
+//   }
+// };
+// const user = new User({ userName: "Kiril", age: 40, numberOfPosts: 5 })
+// console.log(user.getInfo());
+// user.updateNumberOfPosts(3);
+// console.log(user);
+
