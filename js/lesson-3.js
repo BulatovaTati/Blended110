@@ -168,3 +168,117 @@ const tweets = [
 // user.updateNumberOfPosts(3);
 // console.log(user);
 
+// 2. Напиши класс Client який створює об'єкт
+// із властивостями login, email
+// Об'яви приватні властивості #login і #email,
+// доступ до яких зроби через геттер и сеттер:
+// get getClientData() має повертати об'єкт з переліченими властивостями
+// set changeEmail(newEmail) перезаписує пошту користувача
+
+// class Client {
+//   #login;
+//   #email;
+//   constructor (login,email ) {
+//   this.#login=login;
+//   this.#email=email;
+//   }
+
+//   get getClientData() {
+//     return {clientLogin:this.#login, clientEmail:this.#email, }
+//   }
+
+//   set changeEmail(newEmail) {
+//   this.#email=newEmail
+// }
+
+// }
+
+// const client = new Client(`admin`, `admin@mail.com`);
+// console.log(client.getClientData);
+// client.changeEmail = `123@mail.com`;
+// console.log(client.getClientData.clientEmail);
+
+
+// 3. Напиши класс Notes який управляє коллекцієй нотаток у
+// властивості items.
+// Нотатка це  об'єкт з властивостями text, priority
+// Додай класу статичну властивість Priority,
+// в якій буде зберігатись об'єкт з пріорітетами ("hight", "middle", "low").
+// Додай методи getNotes(), addNote(note), removeNote(noteText)
+// updatePriority(noteText, newPriority),
+
+// class Notes {
+//   static Priority = {
+//     HIGHT: "hight",
+//     MIDDLE:"middle",
+//     LOW:"low" 
+//   }
+//   constructor() {
+//     this.items = [];
+//   }
+  
+//   getNotes() {
+//     return this.items;
+//   }
+
+//   addNote(note) {
+//     this.items.push(note);
+//    }
+  
+//   removeNote(noteText) {
+//    this.items= this.items.filter(item => item.text !== noteText);
+//   }
+
+//   updatePriority(noteText, newPriority) {
+//     const note = this.items.find(item => item.text === noteText);
+//     if (note) note.priority = newPriority;
+//  }
+// }
+
+// const note = new Notes()
+// note.addNote({ text: "admin", priority: Notes.Priority.LOW });
+// note.addNote({ text: "567", priority: Notes.Priority.MIDDLE });
+// note.addNote({text: "NNN", priority: Notes.Priority.HIGHT})
+// note.removeNote("admin");
+// note.updatePriority("567", Notes.Priority.HIGHT);
+
+// console.log(note.getNotes());
+// console.table(note.getNotes());
+// console.dir( note.getNotes());
+
+////////////////////////////////////////////////////////////////////////
+// 4. Створити клас Worker, у якого є властивості name і salary.
+// У класу Worker є метод getSalary, який повертає повідомлення
+// "Worker <name> has salary <salary> dollars"
+// Створити клас WorkerPosition, у якого є властивість position
+// і який успадковує клас Worker, додаючи метод getPosition
+// який повертає повідомлення "<name> works as <position>"
+///////////////////////////////////////////////////////////////
+// 5. Створити клас Contact для створення контакта з полями name, email і phone.
+// Потім створиnb клас ContactBook, який буде зберігати список контактів
+// і надавати методи для додавання, видалення та пошуку контактів.
+//////////////////////////////////////////////////////////////////
+
+// 7. Є масив чисел, наприклад: arr = [1,2,3,4,5]
+// Напишіть функцію getSums(arr), яка повертає масив його часткових сум.
+// Іншими словами, виклик getSums(arr) має повертати новий масив з такої ж
+// кількості елементів, в якому на кожній позиції буде сума елементів масива
+// до цієї позиції включно
+
+// Наприклад: для arr = [1,2,3,4,5]
+// getSums( arr ) = [ 1, 1+2, 1+2+3, 1+2+3+4, 1+2+3+4+5 ] = [ 1, 3, 6, 10, 15 ]
+// Функція не має змінювати вхідний масив
+// Використовуйте метод reduce
+// 10. Знайти найдорожчий продукт у категорії "meat"
+// Напиши для цього функцію getMostExpensiveMeatProduct(products)
+
+// const products = [
+//   { name: 'Apple', category: 'fruits', price: 1.2, stock: 50 },
+//   { name: 'Banana', category: 'fruits', price: 0.8, stock: 100 },
+//   { name: 'Carrot', category: 'vegetables', price: 0.5, stock: 200 },
+//   { name: 'Broccoli', category: 'vegetables', price: 1.0, stock: 150 },
+//   { name: 'Milk', category: 'dairy', price: 1.5, stock: 20 },
+//   { name: 'Cheese', category: 'dairy', price: 2.5, stock: 5 },
+//   { name: 'Chicken', category: 'meat', price: 5.0, stock: 30 },
+//   { name: 'Beef', category: 'meat', price: 7.0, stock: 25 }
+// ];
