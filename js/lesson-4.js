@@ -33,13 +33,12 @@
 // function onBtnRemoveClick() {
 //   if (list.lastChild) {
 //     list.lastChild.remove();
+//     if (list.children.length === 0) {
+//       console.log("list.children.length: ", list.children.length);
+//       btnRemove.disabled = true;
+//     }
 //     return;
 //   }
-//   // ?????
-//   //   if (list.children.length === 1 ) {
-//   //     console.log("list.children.length: ", list.children.length);
-//   //     btnRemove.disabled = true;
-//   //   }
 // }
 
 // 2. Створити невелику гру
@@ -75,68 +74,113 @@
 //   box.style.left = `${randomither(100)}%`;
 // }
 
-
 // / 3. Створити розмітку на основі масива даних, де у кожного елемента списку
 // буде вказано ім'я, кількість лайків і перелічені теги
 // в index.html додайте список ul.stats, в який буде рендеритись цей список
 // *властивість gender використай для додавання відповідного класу елементу списка
 
-const tweets = [
-  { id: "000", name: "Alex", gender: "male", likes: 5, tags: ["js", "nodejs"] },
-  {
-    id: "001",
-    name: "Kate",
-    gender: "female",
-    likes: 2,
-    tags: ["html", "css"],
-  },
-{
-    id: "002",
-    name: "Maria",
-    gender: "female",
-    likes: 17,
-    tags: ["html", "js", "nodejs"],
-  },
-  {
-    id: "003",
-    name: "Borys",
-    gender: "male",
-    likes: 8,
-    tags: ["css", "react"],
-  },
-  {
-    id: "004",
-    name: "Jhon",
-    gender: "male",
-    likes: 10,
-    tags: ["js", "nodejs", "react"],
-  },
-{
-    id: "005",
-    name: "Anna",
-    gender: "female",
-    likes: 3,
-    tags: ["js", "nodejs", "react"],
-  },
-  {
-    id: "006",
-    name: "Jhon",
-    gender: "male",
-    likes: 0,
-    tags: ["js", "nodejs", "react"],
-  },
-];
+// const tweets = [
+//   { id: "000", name: "Alex", gender: "male", likes: 5, tags: ["js", "nodejs"] },
+//   {
+//     id: "001",
+//     name: "Kate",
+//     gender: "female",
+//     likes: 2,
+//     tags: ["html", "css"],
+//   },
+// {
+//     id: "002",
+//     name: "Maria",
+//     gender: "female",
+//     likes: 17,
+//     tags: ["html", "js", "nodejs"],
+//   },
+//   {
+//     id: "003",
+//     name: "Borys",
+//     gender: "male",
+//     likes: 8,
+//     tags: ["css", "react"],
+//   },
+//   {
+//     id: "004",
+//     name: "Jhon",
+//     gender: "male",
+//     likes: 10,
+//     tags: ["js", "nodejs", "react"],
+//   },
+// {
+//     id: "005",
+//     name: "Anna",
+//     gender: "female",
+//     likes: 3,
+//     tags: ["js", "nodejs", "react"],
+//   },
+//   {
+//     id: "006",
+//     name: "Jhon",
+//     gender: "male",
+//     likes: 0,
+//     tags: ["js", "nodejs", "react"],
+//   },
+// ];
 
-const list = document.querySelector('.stats');
+// const list = document.querySelector('.stats');
 
-const markup = tweets.map(({name, gender, likes, tags}) => 
-` <li class="stats-item ${gender === 'male'? 'boy' : 'girl'}">
-<p class="stats-name">Name: ${name}</p>
-<p class="stats-likes">Likes: ${likes}</p>
-<p class="stats-tags">Tags: ${tags.join(", ")}</p>
-      </li>`
-) 
-.join("")
+// const markup = tweets.map(({name, gender, likes, tags}) =>
+// ` <li class="stats-item ${gender === 'male'? 'boy' : 'girl'}">
+// <p class="stats-name">Name: ${name}</p>
+// <p class="stats-likes">Likes: ${likes}</p>
+// <p class="stats-tags">Tags: ${tags.join(", ")}</p>
+//       </li>`
+// )
+// .join("")
 
-list.innerHTML = markup;
+// list.innerHTML = markup;
 
+// 4. Кнопка "Приховати" ховає текст і замінює назву кнопки на
+// "Розкрити", при повторному натисканні текст знову стає доступним
+// і кнопка набуває початкового вигляду.
+
+// const input = document.querySelector("#passwordInput");
+// const btn = document.querySelector("#passwordButton");
+
+// btn.addEventListener("click", onBtnClick);
+
+// function onBtnClick() {
+//   if (btn.textContent === "Розкрити") {
+//     btn.textContent = "Приховати";
+//     input.style.color = "inherit";
+//   } else {
+//     btn.textContent = "Розкрити";
+//     input.style.color = "transparent";
+//   }
+// }
+
+// 6. Видалити зі списку елементи, які позначені.
+
+// const form = document.querySelector(".checkboxForm");
+// const list = document.querySelector(".checkboxList");
+// const items = document.querySelectorAll(".checkboxWrapper");
+
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   const newArr = [];
+//   items.forEach((item) => {
+//     if (!item.lastElementChild.checked) newArr.push(item);
+//     console.log(newArr);
+//   });
+//   list.innerHTML = "";
+//   if (newArr.length === 0) {
+//     list.innerHTML = "ups";
+//   } else {
+//     list.append(...newArr);
+//   }
+// });
+//////////////////////////////////////////////////////////
+//  8. При натисканні на будь-який рядок у табличці відобразіть
+//  повідомлення з назвою продукту та його ціною.
+//  "Ви вибрали <product> за <price>".
+// 9. При натисканні на кожну з кнопок підсумовуються значення з data-атрибутів.
+// За натисканням на кнопку "Вивести результат" виводиться сума значення, а також статистика з
+// інформацією про те, яка кнопка була натиснута скільки разів.
