@@ -142,17 +142,45 @@
 // "Розкрити", при повторному натисканні текст знову стає доступним
 // і кнопка набуває початкового вигляду.
 
-const input = document.querySelector("#passwordInput");
-const btn = document.querySelector("#passwordButton");
+// const input = document.querySelector("#passwordInput");
+// const btn = document.querySelector("#passwordButton");
 
-btn.addEventListener("click", onBtnClick);
+// btn.addEventListener("click", onBtnClick);
 
-function onBtnClick() {
-  if (btn.textContent === "Розкрити") {
-    btn.textContent = "Приховати";
-    input.style.color = "inherit";
-  } else {
-    btn.textContent = "Розкрити";
-    input.style.color = "transparent";
-  }
-}
+// function onBtnClick() {
+//   if (btn.textContent === "Розкрити") {
+//     btn.textContent = "Приховати";
+//     input.style.color = "inherit";
+//   } else {
+//     btn.textContent = "Розкрити";
+//     input.style.color = "transparent";
+//   }
+// }
+
+// 6. Видалити зі списку елементи, які позначені.
+
+// const form = document.querySelector(".checkboxForm");
+// const list = document.querySelector(".checkboxList");
+// const items = document.querySelectorAll(".checkboxWrapper");
+
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   const newArr = [];
+//   items.forEach((item) => {
+//     if (!item.lastElementChild.checked) newArr.push(item);
+//     console.log(newArr);
+//   });
+//   list.innerHTML = "";
+//   if (newArr.length === 0) {
+//     list.innerHTML = "ups";
+//   } else {
+//     list.append(...newArr);
+//   }
+// });
+//////////////////////////////////////////////////////////
+//  8. При натисканні на будь-який рядок у табличці відобразіть
+//  повідомлення з назвою продукту та його ціною.
+//  "Ви вибрали <product> за <price>".
+// 9. При натисканні на кожну з кнопок підсумовуються значення з data-атрибутів.
+// За натисканням на кнопку "Вивести результат" виводиться сума значення, а також статистика з
+// інформацією про те, яка кнопка була натиснута скільки разів.
