@@ -113,32 +113,30 @@ const tweets = [
 
 // console.log(getSortedUniqueTags(tweets));
 
-
 // 5. Напишіть функцію getStatiscticsOfTags(array), яка приймає масив
 // і повертає об'єкт статистики, який враховує скільки разів повторюється кожен тег
 // в усіх користувачів разом (не для кожного окремо)
 // має бути відповідь: {js: 5, nodejs: 5, html: 2, css: 2, react: 4}
 
 // function getStatiscticsOfTags(array) {
-  // const stats = {};
-  // array.flatMap(elem => elem.tags)
-  //   .forEach(tag => {
-  //     if (stats[tag])
-  //     {
-  //       stats[tag] += 1
-  //     }
-  //     else 
-  //     {
-  //       stats[tag] = 1;
-  //     }
-  //     console.log(stats);
-      
-  //   })
-  //   return stats;
+// const stats = {};
+// array.flatMap(elem => elem.tags)
+//   .forEach(tag => {
+//     if (stats[tag])
+//     {
+//       stats[tag] += 1
+//     }
+//     else
+//     {
+//       stats[tag] = 1;
+//     }
+//     console.log(stats);
+
+//   })
+//   return stats;
 //   return array.flatMap(elem => elem.tags).reduce((stats, tag) =>({...stats, [tag]: stats[tag] ? stats[tag] + 1 : 1}),{})
 // };
 // console.log(getStatiscticsOfTags(tweets));
-
 
 // 1. Створи клас User для створення користувача з такими властивостями:
 // a. userName - ім'я, рядок
@@ -198,7 +196,6 @@ const tweets = [
 // client.changeEmail = `123@mail.com`;
 // console.log(client.getClientData.clientEmail);
 
-
 // 3. Напиши класс Notes який управляє коллекцієй нотаток у
 // властивості items.
 // Нотатка це  об'єкт з властивостями text, priority
@@ -211,12 +208,12 @@ const tweets = [
 //   static Priority = {
 //     HIGHT: "hight",
 //     MIDDLE:"middle",
-//     LOW:"low" 
+//     LOW:"low"
 //   }
 //   constructor() {
 //     this.items = [];
 //   }
-  
+
 //   getNotes() {
 //     return this.items;
 //   }
@@ -224,7 +221,7 @@ const tweets = [
 //   addNote(note) {
 //     this.items.push(note);
 //    }
-  
+
 //   removeNote(noteText) {
 //    this.items= this.items.filter(item => item.text !== noteText);
 //   }
@@ -253,10 +250,106 @@ const tweets = [
 // Створити клас WorkerPosition, у якого є властивість position
 // і який успадковує клас Worker, додаючи метод getPosition
 // який повертає повідомлення "<name> works as <position>"
+
+class Worker {
+  constructor({ name, salary }) {
+    this.name = name;
+    this.salary = salary;
+  }
+
+  getSalary() {
+    return `Worker ${this.name} has salary ${this.salary} dollars`;
+  }
+}
+
+class WorkerPosition extends Worker {
+  constructor({ name, salary, position }) {
+    super({ name, salary });
+    this.position = position;
+  }
+
+  getPosition() {
+    return `${this.name} works as ${this.position}`;
+  }
+}
+
+const mango = new Worker({
+  name: "Mango",
+  salary: 500,
+});
+
+const editor = new WorkerPosition({
+  name: "Poly",
+  salary: 1000,
+  position: "editor",
+});
+
+// console.log(mango.getSalary());
+// console.log(editor.getSalary());
+// console.log(editor.getPosition());
+
 ///////////////////////////////////////////////////////////////
 // 5. Створити клас Contact для створення контакта з полями name, email і phone.
 // Потім створиnb клас ContactBook, який буде зберігати список контактів
 // і надавати методи для додавання, видалення та пошуку контактів.
+class Contact {
+  constructor({ name, email, phone }) {
+    this.name = name;
+    this.email = email;
+    this.phone = phone;
+  }
+}
+
+class ContactBook {
+  constructor() {
+    this.contacts = [];
+  }
+
+  get contactList() {
+    return this.contacts;
+  }
+
+  addContact(contact) {
+    this.contacts.push(contact);
+  }
+
+  deleteContact(name) {
+    this.contacts = this.contacts.filter((contact) => contact.name !== name);
+  }
+
+  findContact(name) {
+    return (
+      this.contacts.find((contact) => contact.name === name) ||
+      "Contact not found"
+    );
+  }
+}
+
+const contactBook = new ContactBook();
+
+const contact1 = new Contact({
+  name: "John Doe",
+  email: "john@example.com",
+  phone: "123-000-0000",
+});
+
+const contact2 = new Contact({
+  name: "Jane Smith",
+  email: "jane@example.com",
+  phone: "098-1111-1111",
+});
+
+contactBook.addContact(contact1);
+contactBook.addContact(contact2);
+
+// console.log(contactBook.contactList);
+
+// console.log(contactBook.findContact("John Doe"));
+// console.log(contactBook.findContact("Mike"));
+
+// contactBook.deleteContact("Jane Smith");
+
+// console.log(contactBook.contactList);
 //////////////////////////////////////////////////////////////////
 
 // 7. Є масив чисел, наприклад: arr = [1,2,3,4,5]
@@ -269,16 +362,61 @@ const tweets = [
 // getSums( arr ) = [ 1, 1+2, 1+2+3, 1+2+3+4, 1+2+3+4+5 ] = [ 1, 3, 6, 10, 15 ]
 // Функція не має змінювати вхідний масив
 // Використовуйте метод reduce
+
+const arr = [1, 2, 3, 4, 5];
+
+// function getSums(arr) {
+//   let result = [];
+
+//   arr.reduce((sum, current) => {
+//     sum += current;
+//     result.push(sum);
+//     return sum;
+//   }, 0);
+
+//   return result;
+// }
+
+function getSums(arr) {
+  return arr.reduce((acc, num) => {
+    const lastAcc = acc.length > 0 ? acc[acc.length - 1] : 0;
+
+    console.log("lastAcc : ", lastAcc, "-", "num: ", num);
+    // lastAcc : 0 , num:  1
+    // lastAcc :  1 , num:  2
+    //  lastAcc :  3 , num:  3
+    //  lastAcc :  6,  num:  4
+    //  lastAcc :  10 , num:  5
+
+    acc.push(lastAcc + num);
+    // 0+1=1, стартове значення + наступне 1+2=3, 3+3=6, 6+4=10, 10+5=15
+    return acc;
+  }, []);
+}
+
+// console.log("getSums(arr): ", getSums(arr));
+
+//////////////////////////////////
 // 10. Знайти найдорожчий продукт у категорії "meat"
 // Напиши для цього функцію getMostExpensiveMeatProduct(products)
 
-// const products = [
-//   { name: 'Apple', category: 'fruits', price: 1.2, stock: 50 },
-//   { name: 'Banana', category: 'fruits', price: 0.8, stock: 100 },
-//   { name: 'Carrot', category: 'vegetables', price: 0.5, stock: 200 },
-//   { name: 'Broccoli', category: 'vegetables', price: 1.0, stock: 150 },
-//   { name: 'Milk', category: 'dairy', price: 1.5, stock: 20 },
-//   { name: 'Cheese', category: 'dairy', price: 2.5, stock: 5 },
-//   { name: 'Chicken', category: 'meat', price: 5.0, stock: 30 },
-//   { name: 'Beef', category: 'meat', price: 7.0, stock: 25 }
-// ];
+const products = [
+  { name: "Apple", category: "fruits", price: 1.2, stock: 50 },
+  { name: "Banana", category: "fruits", price: 0.8, stock: 100 },
+  { name: "Carrot", category: "vegetables", price: 0.5, stock: 200 },
+  { name: "Broccoli", category: "vegetables", price: 1.0, stock: 150 },
+  { name: "Milk", category: "dairy", price: 1.5, stock: 20 },
+  { name: "Cheese", category: "dairy", price: 2.5, stock: 5 },
+  { name: "Chicken", category: "meat", price: 5.0, stock: 30 },
+  { name: "Beef", category: "meat", price: 7.0, stock: 25 },
+];
+
+const CATEGORY = "meat";
+
+function getMostExpensiveMeatProduct(products) {
+  return products
+    .filter((product) => product.category === CATEGORY)
+    .reduce((prev, current) => (prev.price > current.price ? prev : current));
+}
+
+// console.log(getMostExpensiveMeatProduct(products));
