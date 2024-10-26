@@ -181,6 +181,84 @@
 //  8. При натисканні на будь-який рядок у табличці відобразіть
 //  повідомлення з назвою продукту та його ціною.
 //  "Ви вибрали <product> за <price>".
+
+const productTable = document.querySelector("#productTable");
+const productDetails = document.querySelector("#productDetails");
+productDetails.innerText = "Виберіть продукт";
+
+productTable.addEventListener("click", handleProductClick);
+function handleProductClick(evt) {
+  const td = evt.target.closest("td");
+  if (td) {
+    const product = td.parentNode.cells[0].textContent;
+    const price = td.parentNode.cells[1].textContent;
+
+    productDetails.innerText = `Ви вибрали ${product} за ${price}`;
+  } else {
+    productDetails.innerText = "Ви не вибрали продукт";
+  }
+}
+
 // 9. При натисканні на кожну з кнопок підсумовуються значення з data-атрибутів.
 // За натисканням на кнопку "Вивести результат" виводиться сума значення, а також статистика з
 // інформацією про те, яка кнопка була натиснута скільки разів.
+
+const statList = document.querySelector(".statList");
+statList.addEventListener("click", handleResultClick);
+
+const resultButton = document.querySelector("#resultButton");
+resultButton.addEventListener("click", displayResult);
+
+const resultSection = document.getElementById("resultSection");
+
+let totalSum = 0;
+const buttonClickStats = {};
+
+function handleResultClick(evt) {
+  const button = evt.target;
+
+  if (button.classList.contains("calcButton")) {
+    const value = Number(button.dataset.number);
+    totalSum += value;
+
+    buttonClickStats[button.textContent] =
+      (buttonClickStats[button.textContent] || 0) + 1;
+
+    // 0
+    // buttonClickStats["Button #1"] = (undefined || 0) + 1; 1
+    // 1
+    // buttonClickStats["Button #1"] = (1 || 0) + 1; 2
+  }
+}
+
+function displayResult() {
+  const resultTable = document.createElement("table");
+  resultTable.classList.add("result-table");
+
+  resultTable.innerHTML = `
+    <thead>
+      <tr>
+        <th>Кнопка</th>
+        <th>Кількість натискань</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>Загальна сума</td>
+      <td>${totalSum}</td>
+    </tr>    
+    </tbody>   
+  `;
+
+  for (const [buttonLabel, count] of Object.entries(buttonClickStats)) {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${buttonLabel}</td>
+      <td>${count}</td>
+    `;
+    resultTable.querySelector("tbody").prepend(row);
+  }
+
+  resultSection.innerHTML = "";
+  resultSection.append(resultTable);
+}
